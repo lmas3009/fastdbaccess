@@ -17,6 +17,7 @@ export default function Home() {
     animate: { opacity: 1 },
     exit: { opacity: 0 },
   };
+
   return (
     <div className="bg-white text-black w-full h-full">
       <Head>
@@ -114,11 +115,7 @@ export default function Home() {
 
           <Fade bottom>
             <footer className={styles.footer}>
-              <a
-                href="#"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a href="#" target="_blank" rel="noopener noreferrer">
                 Powered by fastdbaccess
               </a>
               <p>Github</p>

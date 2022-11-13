@@ -56,7 +56,17 @@ const Pricing = () => (
                               alt="check-mark"
                             />
                             <p className="text-gray-800 text-base font-normal">
-                              Unlimited Projects
+                              5 Projects
+                            </p>
+                          </li>
+                          <li className="flex items-center mb-2.5">
+                            <img
+                              src="https://cdn.tuk.dev/assets/templates/weCare/checkMark.png"
+                              className="mr-4"
+                              alt="check-mark"
+                            />
+                            <p className="text-gray-800 text-base font-normal">
+                              5 Database Templates
                             </p>
                           </li>
                           <li className="flex items-center mb-2.5">
@@ -116,6 +126,26 @@ const Pricing = () => (
                             />
                             <p className="text-white text-base font-normal">
                               Unlimited Projects
+                            </p>
+                          </li>
+                          <li className="flex items-center mb-2.5">
+                            <img
+                              src="https://cdn.tuk.dev/assets/templates/weCare/checkMarkWhite.png"
+                              className="mr-4"
+                              alt="check-mark"
+                            />
+                            <p className="text-white text-base font-normal">
+                              5 Database Templates
+                            </p>
+                          </li>
+                          <li className="flex items-center mb-2.5">
+                            <img
+                              src="https://cdn.tuk.dev/assets/templates/weCare/checkMarkWhite.png"
+                              className="mr-4"
+                              alt="check-mark"
+                            />
+                            <p className="text-white text-base font-normal">
+                              Custom Databases
                             </p>
                           </li>
                           <li className="flex items-center mb-2.5">

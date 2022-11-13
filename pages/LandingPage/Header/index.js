@@ -2,6 +2,7 @@ import Logo from "../IntroSection/logo";
 import Link from "next/link";
 import { CgMenuGridO, CgClose } from "react-icons/cg";
 import { useState } from "react";
+import { signIn } from "next-auth/react";
 
 const Header = () => {
   const [menu, setMenu] = useState(false);
@@ -26,11 +27,12 @@ const Header = () => {
             </Link>
           </div>
           <div className="flex gap-2">
-            <Link href="/Auth/auth-account">
-              <p className="p-1 pl-5 pr-5 bg-[#0A2D28] rounded text-white">
-                Get Started
-              </p>
-            </Link>
+            <p
+              onClick={() => signIn()}
+              className="p-1 pl-5 pr-5 bg-[#0A2D28] rounded text-white cursor-pointer"
+            >
+              Get Started
+            </p>
           </div>
         </div>
 
