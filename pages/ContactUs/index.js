@@ -7,15 +7,15 @@ import styles from "../../styles/Home.module.css";
 
 function ContactUs() {
   return (
-    <div className="relative w-full h-full poppins">
+    <div className="relative w-full h-full poppins bg-white">
       <Image
         alt="vectorimg"
         src={"/assets/vectorimg.png"}
         width={400}
         height={400}
-        className="w-full h-[full] sm:h-[70vh] md:h-[80vh]"
+        className="w-[100%] h-[full] sm:h-[70vh] md:h-[80vh]"
       />
-      <div className="absolute w-full top-0">
+      <div className="absolute w-full top-0 text-black">
         <Header />
         <div className="w-full flex items-center justify-center mt-10">
           <Fade top>
@@ -23,7 +23,7 @@ function ContactUs() {
           </Fade>
         </div>
         <div className="w-full flex items-center justify-center">
-          <Fade left>
+          <Fade>
             <div className=" rounded py-12 lg:px-28 px-8 w-max bg-white mt-10">
               <p className="text-4xl leading-7 text-center text-gray-700 abel">
                 Contact Us
@@ -72,22 +72,22 @@ function ContactUs() {
                 policy and how we use data as stated
               </p>
               <div className="flex items-center justify-center w-full">
-                <button className="mt-9 text-base font-semibold leading-none text-white py-4 px-10 bg-indigo-700 rounded hover:bg-indigo-600 focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 focus:outline-none">
+                <button className="mt-9 text-base leading-none text-white py-4 px-10 bg-[#0A2D28] rounded hover:bg-indigo-600 focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 focus:outline-none">
                   SUBMIT
                 </button>
               </div>
             </div>
           </Fade>
         </div>
-        
-      <Fade bottom>
-        <footer className={styles.footer}>
-          <a href="#" target="_blank" rel="noopener noreferrer">
-            Powered by fastdbaccess
-          </a>
-          <p>Github</p>
-        </footer>
-      </Fade>
+
+        <Fade bottom>
+          <footer className={styles.footer}>
+            <a href="#" target="_blank" rel="noopener noreferrer">
+              Powered by fastdbaccess
+            </a>
+            <p>Github</p>
+          </footer>
+        </Fade>
       </div>
     </div>
   );

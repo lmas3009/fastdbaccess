@@ -6,7 +6,7 @@ import { Fade } from "react-reveal";
 import styles from "../../styles/Home.module.css";
 
 const Pricing = () => (
-  <div className="relative w-full h-full ">
+  <div className="relative w-full h-full bg-white">
     <Image
       alt="vectorimg"
       src={"/assets/vectorimg.png"}
@@ -14,7 +14,7 @@ const Pricing = () => (
       height={400}
       className="w-full h-[full] sm:h-[70vh] md:h-[80vh]"
     />
-    <div className="absolute w-full top-0">
+    <div className="absolute w-full top-0 text-black">
       <Header />
       <section className="px-6 xl:px-0">
         <div className="mt-10 mx-auto container flex flex-col items-center justify-center">
@@ -31,8 +31,8 @@ const Pricing = () => (
           <div className="flex items-center justify-center w-full">
             <div className="pt-14">
               <div className="container mx-auto">
-                <div className="flex flex-wrap mb-12 justify-between sm:justify-center -mx-6">
-                  <Fade left>
+                <Fade cascade>
+                  <div className="flex flex-wrap mb-12 justify-between sm:justify-center -mx-6">
                     <div className="w-80  mb-4 px-6">
                       <div className="py-5 px-4 bg-white border border-gray-200shadow rounded-lg text-left">
                         <h4 className="text-2xl text-[#0A2D28] font-semibold pb-8">
@@ -92,8 +92,6 @@ const Pricing = () => (
                         </button>
                       </div>
                     </div>
-                  </Fade>
-                  <Fade right>
                     <div className="w-80 mb-4 px-6">
                       <div className="py-5 px-4 bg-[#0A2D28] border border-gray-200 shadow rounded-lg text-left">
                         <h4 className="text-2xl text-white font-semibold pb-8">
@@ -151,8 +149,8 @@ const Pricing = () => (
                         </button>
                       </div>
                     </div>
-                  </Fade>
-                </div>
+                  </div>
+                </Fade>
               </div>
               <style
                 dangerouslySetInnerHTML={{

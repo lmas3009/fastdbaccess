@@ -7,18 +7,18 @@ const Intro = () => {
       <Fade top>
         <Logo font="large" />
       </Fade>
-      <Fade top>
+      <Fade top cascade>
         <p className="abel text-4xl sm:text-5xl md:text-7xl w-full sm:w-[500px] md:w-[700px] text-center p-3">
           Organize and Manage your Database
         </p>
       </Fade>
-      <Fade left>
+      <Fade top cascade>
         <p className="poppins w-full p-5 md:w-[700px] text-center">
           Easy and simple way to create your database and use the api url
           perform CRUD operations on your application.
         </p>
       </Fade>
-      <Fade right>
+      <Fade >
         <div className="flex flex-wrap gap-5 items-center justify-center">
           <p className="p-2 pl-5 pr-5 bg-[#0A2D28] text-white rounded text-center">
             Get Started
