@@ -4,23 +4,28 @@ import Image from "next/image";
 import { signIn } from "next-auth/react";
 import { useEffect } from "react";
 import { useSession } from "next-auth/react";
-import instance from "../../../utils/axios"
+import instance from "../../../utils/axios";
 import Router from "next/router";
 
 const CreactAccount = () => {
   const { data: session, status } = useSession();
   useEffect(() => {
+    console.log(status);
     if (status === "authenticated") {
       instance
         .post("/userinfo", {
+          create_user: "true",
           email: session.user.email,
           name: session.user.name,
           profile: session.user.image,
         })
         .then((res) => {
-          console.log(res);
           if (res.data.status) {
-            Router.push("/hello");
+            window.localStorage.setItem(
+              "fastdbaccess_token",
+              res.data.result.id
+            );
+            Router.push("/home/" + res.data.result.id);
           }
         })
         .catch((err) => {

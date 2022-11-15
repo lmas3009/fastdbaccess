@@ -8,7 +8,7 @@ const Intro = () => {
         <Logo font="large" />
       </Fade>
       <Fade top cascade>
-        <p className="abel text-4xl sm:text-5xl md:text-7xl w-full sm:w-[500px] md:w-[700px] text-center p-3">
+        <p className="abel text-4xl sm:text-5xl md:text-7xl w-full sm:w-[500px] md:w-[750px] text-center p-3">
           Organize and Manage your Database
         </p>
       </Fade>

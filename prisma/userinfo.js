@@ -36,6 +36,7 @@ export const getUser = async (email) => {
   const user = await prisma.UserInfo.findMany({
     where: { Email: email },
   });
+  console.log(user);
   if (Object.keys(user).length !== 0 && user[0].Email === email) {
     return {
       status: true,
