@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-const Slider = () => {
+const Slider = ({setStorage,data}) => {
   useEffect(() => {
     const range = document.getElementById("range"),
       tooltip = document.getElementById("tooltip"),
@@ -32,10 +32,11 @@ const Slider = () => {
                 id="range"
                 className="rounded text-sm border-2 border-slate-500 p-5"
                 type="range"
-                step={1}
+                step={0.1}
                 defaultValue={1}
                 min={1}
-                max={20}
+                max={data.StorageSize}
+                onChange={(e)=>setStorage(e.target.value)}
               />
             </div>
           </div>

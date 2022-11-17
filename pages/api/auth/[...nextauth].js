@@ -14,7 +14,7 @@ export default NextAuth({
           response_type: "code",
         },
         httpOptions: {
-          timeout: 40000,
+          timeout: 10000,
         }
       },
       secret: process.env.NEXTAUTH_SECRET,

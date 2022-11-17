@@ -10,6 +10,7 @@ import {
 import { IoIosAnalytics } from "react-icons/io";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import {signOut} from "next-auth/react"
 
 const SideMenu = () => {
   const query = useRouter();
@@ -79,7 +80,7 @@ const SideMenu = () => {
         </div>
       </div>
       <div className="flex flex-col gap-5 text-sm lg:text-base">
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2" onClick={()=>signOut}>
           <span className="text-xl sm:text-lg">
             <RiSettings6Line />
           </span>

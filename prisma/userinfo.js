@@ -20,8 +20,8 @@ export const createUser = async (email, name, profile) => {
         Name: name,
         Email: email,
         Profile: profile,
-        ProjectCount: "0",
-        StorageSize: "0",
+        ProjectCount: "5",
+        StorageSize: "20",
       },
     });
     return {
@@ -36,7 +36,6 @@ export const getUser = async (email) => {
   const user = await prisma.UserInfo.findMany({
     where: { Email: email },
   });
-  console.log(user);
   if (Object.keys(user).length !== 0 && user[0].Email === email) {
     return {
       status: true,
@@ -62,25 +61,15 @@ export const getUserID = async (id) => {
   };
 };
 
-export const updateUserProjectCount = async (id, ProjectCount) => {
+export const updateUserProject = async (id, StorageSize,projectcount) => {
+  const get = await getUserID(id);
   const user = await prisma.UserInfo.update({
     where: { id },
     data: {
-      ProjectCount: ProjectCount,
-    },
-  });
-
-  return {
-    status: true,
-    result: user,
-  };
-};
-
-export const updateUserStorageSize = async (id, StorageSize) => {
-  const user = await prisma.UserInfo.update({
-    where: { id },
-    data: {
-      StorageSize: StorageSize,
+      StorageSize: (
+        Number(get.result[0].StorageSize) - Number(StorageSize)
+      ).toString(),
+      ProjectCount: (Number(get.result[0].ProjectCount) - projectcount).toString(),
     },
   });
 

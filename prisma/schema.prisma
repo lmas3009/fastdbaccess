@@ -16,37 +16,43 @@ model UserInfo {
     StorageSize  String
 }
 
-model Template_Userinfo {
-    id          String   @id @default(auto()) @map("_id") @db.ObjectId
-    Name        String
-    Surname     String
-    Email       String
-    Age         String
-    Created_on  DateTime @default(now())
-    userid      String
-    projectid   String
+model Projects {
+    id          String @id @default(auto()) @map("_id") @db.ObjectId
     projectname String
+    projectsize String
+    template    String
+    userid      String
+    created_on  String
+}
+
+model Template_Userinfo {
+    id         String   @id @default(auto()) @map("_id") @db.ObjectId
+    Name       String
+    Surname    String
+    Email      String
+    Age        String
+    Created_on DateTime @default(now())
+    userid     String
+    projectid  String
 }
 
 model Template_Feedback {
-    id          String   @id @default(auto()) @map("_id") @db.ObjectId
-    Name        String
-    Email       String
-    Feedback    String
-    Created_on  DateTime @default(now())
-    userid      String
-    projectid   String
-    projectname String
+    id         String   @id @default(auto()) @map("_id") @db.ObjectId
+    Name       String
+    Email      String
+    Feedback   String
+    Created_on DateTime @default(now())
+    userid     String
+    projectid  String
 }
 
 model Template_NewsLetter {
-    id          String   @id @default(auto()) @map("_id") @db.ObjectId
-    Name        String
-    Email       String
-    Created_on  DateTime @default(now())
-    userid      String
-    projectid   String
-    projectname String
+    id         String   @id @default(auto()) @map("_id") @db.ObjectId
+    Name       String
+    Email      String
+    Created_on DateTime @default(now())
+    userid     String
+    projectid  String
 }
 
 model Template_ContactUs {
@@ -59,17 +65,15 @@ model Template_ContactUs {
     Created_on  DateTime @default(now())
     userid      String
     projectid   String
-    projectname String
 }
 
 model Template_ContactUs2 {
-    id          String   @id @default(auto()) @map("_id") @db.ObjectId
-    Name        String
-    Email       String
-    Country     String
-    Message     String
-    Created_on  DateTime @default(now())
-    userid      String
-    projectid   String
-    projectname String
+    id         String   @id @default(auto()) @map("_id") @db.ObjectId
+    Name       String
+    Email      String
+    Country    String
+    Message    String
+    Created_on DateTime @default(now())
+    userid     String
+    projectid  String
 }

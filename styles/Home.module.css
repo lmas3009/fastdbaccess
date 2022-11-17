@@ -12,3 +12,8 @@
 .footer a {
   flex-grow: 1;
 }
+
+.css-162mkon{
+  display: none;
+  position: relative;
+}
