@@ -1,26 +1,37 @@
-import { Select } from "@chakra-ui/react";
-import "../../styles/Home.module.css";
 import { useEffect, useState } from "react";
 import instance from "../../utils/axios";
 import Router, { useRouter } from "next/router";
-import Image from "next/image";
-import Alert from "./alert"
+import Tables from "./tables";
+import Alert from "./alert";
 
-const Analytics = () => {
-  const query = useRouter();
-  const { id, menu } = query.query;
-
+const ProjectPage = () => {
   const [projectdata, setprojectdata] = useState([]);
-  const [_delete,setdelete] = useState(false) 
+  const [projectdatastats, setprojectdatastats] = useState([]);
+  const [_delete, setdelete] = useState(false);
+  const query = useRouter();
+  const {id} = query.query
+  const pid = query.asPath.split("#")[2];
 
   useEffect(() => {
     instance
       .get("/projects", {
-        id: id,
+        params: {
+          id: pid,
+          projectbyid: true,
+        },
       })
       .then((res) => {
         if (res.data.status) {
           setprojectdata(res.data.result);
+          instance
+            .post("/projectstats", {
+              projectid: pid,
+            })
+            .then((res) => {
+              if (res.data.status) {
+                setprojectdatastats(res.data.result);
+              }
+            });
         }
       });
   }, [id]);
@@ -35,39 +46,50 @@ const Analytics = () => {
         },
       })
       .then((res) => {
-        setdelete(true)
-        setTimeout(()=>{
-          Router.reload();
-        },2000)
+        setdelete(true);
+        setTimeout(() => {
+          Router.back();
+        }, 2000);
       });
   };
 
+  const Template_Userinfo = ["Name", "Surname", "Email", "Age", "Created_on"];
+  const Template_Feedback = ["Name", "Email", "Feedback", "Created_on"];
+  const Template_NewsLetter = ["Name", "Email", "Created_on"];
+  const Template_ContactUs = [
+    "Name",
+    "Email",
+    "Country",
+    "PhoneNumber",
+    "Message",
+    "Created_on",
+  ];
+  const Template_ContactUs2 = [
+    "Name",
+    "Email",
+    "Country",
+    "Message",
+    "Created_on",
+  ];
+
+  const database =
+    projectdata[0]?.template === "UserInfo Database"
+      ? Template_Userinfo
+      : projectdata[0]?.template === "Feedback Database"
+      ? Template_Feedback
+      : projectdata[0]?.template === "NewsLetter Database"
+      ? Template_NewsLetter
+      : projectdata[0]?.template === "Contact Us Database"
+      ? Template_ContactUs
+      : projectdata[0]?.template === "Contact Us 2 Datatbase"
+      ? Template_ContactUs2
+      : [];
+
   return (
     <div className="p-5 poppins">
-      <p>Analytics</p>
-      {_delete?<Alert/>:<></>}
-      <Select
-        placeholder="Select your Project"
-        className="border-2 border-black rounded p-2 mt-5"
-        onChange={(e) => {
-          window.localStorage.setItem("fastdbaccess_analytics", e.target.value)
-        }}
-      >
+      <div>
+        {_delete?<Alert />:<></>}
         {projectdata.length > 0 ? (
-          projectdata.map((item, index) => {
-            return (
-              <option key={index} value={item.projectname + "#" + item.id}>
-                {item.projectname}
-              </option>
-            );
-          })
-        ) : (
-          <></>
-        )}
-      </Select>
-
-      {window.localStorage.getItem("fastdbaccess_analytics") ? (
-        projectdata.length > 0 ? (
           projectdata.map((item, index) => {
             return item.projectname ===
               window.localStorage
@@ -77,7 +99,7 @@ const Analytics = () => {
                 window.localStorage
                   .getItem("fastdbaccess_analytics")
                   .split("#")[1] ? (
-              <div key={index} className="mt-10">
+              <div key={index} className="">
                 <div className="w-full flex flex-col gap-3 bg-[#0A2D28] p-3 poppins rounded text-white">
                   <p className="text-sm">Project Name: {item.projectname}</p>
                   <p className="text-sm">Project Template: {item.template}</p>
@@ -98,12 +120,11 @@ const Analytics = () => {
           })
         ) : (
           <></>
-        )
-      ) : (
-        <></>
-      )}
+        )}
+        <Tables data={projectdatastats} database={database} />
+      </div>
     </div>
   );
 };
 
-export default Analytics;
+export default ProjectPage;

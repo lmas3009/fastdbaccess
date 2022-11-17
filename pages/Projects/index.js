@@ -13,7 +13,7 @@ const Projects = () => {
   useEffect(() => {
     instance
       .get("/projects", {
-        id: id,
+        params: { id: id, projectbyid: false },
       })
       .then((res) => {
         if (res.data.status) {
@@ -23,9 +23,9 @@ const Projects = () => {
   }, [id]);
 
   const modifytime = (time) => {
-    var date = time.split(" ")
-    return date[1]+" "+date[2]+" "+date[3]
-  }
+    var date = time.split(" ");
+    return date[1] + " " + date[2] + " " + date[3];
+  };
 
   return (
     <div className="p-5 poppins">
@@ -47,11 +47,26 @@ const Projects = () => {
                     <p>{item.projectname}</p>
                     <div className="w-full flex justify-between">
                       <div className="text-xs">{item.template}</div>
-                      <div className="text-xs font-medium">&ldquo;{item.projectsize} MB&rdquo;</div>
+                      <div className="text-xs font-medium">
+                        &ldquo;{item.projectsize} MB&rdquo;
+                      </div>
                     </div>
                     <div className="w-full flex justify-between">
-                      <div className="text-xs">{modifytime(item.created_on)}</div>
-                      <Link onClick={()=>window.localStorage.setItem("fastdbaccess_analytics",item.projectname+"#"+item.id)} href={"/home/"+id+"#analytics"}  className="text-xs cursor-pointer">open</Link>
+                      <div className="text-xs">
+                        {modifytime(item.created_on)}
+                      </div>
+                      <Link
+                        onClick={() =>
+                          window.localStorage.setItem(
+                            "fastdbaccess_analytics",
+                            item.projectname + "#" + item.id
+                          )
+                        }
+                        href={"#project#" + item.id}
+                        className="text-xs cursor-pointer"
+                      >
+                        open
+                      </Link>
                     </div>
                   </div>
                 </div>

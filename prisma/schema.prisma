@@ -32,7 +32,6 @@ model Template_Userinfo {
     Email      String
     Age        String
     Created_on DateTime @default(now())
-    userid     String
     projectid  String
 }
 
@@ -42,7 +41,6 @@ model Template_Feedback {
     Email      String
     Feedback   String
     Created_on DateTime @default(now())
-    userid     String
     projectid  String
 }
 
@@ -51,7 +49,6 @@ model Template_NewsLetter {
     Name       String
     Email      String
     Created_on DateTime @default(now())
-    userid     String
     projectid  String
 }
 
@@ -63,7 +60,6 @@ model Template_ContactUs {
     PhoneNumber String
     Message     String
     Created_on  DateTime @default(now())
-    userid      String
     projectid   String
 }
 
@@ -74,6 +70,5 @@ model Template_ContactUs2 {
     Country    String
     Message    String
     Created_on DateTime @default(now())
-    userid     String
     projectid  String
 }

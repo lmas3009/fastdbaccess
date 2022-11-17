@@ -13,7 +13,7 @@ const NewProject = () => {
   const [template, settemplate] = useState("None");
   const [showtables, setshowtables] = useState(false);
   const { data: session, status } = useSession();
-  const [data,setdata] = useState([])
+  const [data, setdata] = useState([]);
 
   const query = useRouter();
   const { id } = query.query;
@@ -27,8 +27,8 @@ const NewProject = () => {
           email: session.user.email,
         })
         .then((res) => {
-          if(res.data.status){
-            setdata(res.data.result)
+          if (res.data.status) {
+            setdata(res.data.result);
           }
         });
     }
@@ -58,8 +58,7 @@ const NewProject = () => {
           userid: id,
         })
         .then((res) => {
-          console.log(res);
-          Router.reload()
+          Router.back();
         });
     }
   };
@@ -68,7 +67,14 @@ const NewProject = () => {
     <div className="p-5 bg-white text-black poppins">
       {/* New project input tag */}
       <div>
-        <p className="text-lg">Create New Project <span className="text-xs">{data.ProjectCount<=0?"No Projects Left": data.ProjectCount+" Projects Left"}</span></p>
+        <p className="text-lg">
+          Create New Project{" "}
+          <span className="text-xs">
+            {data.ProjectCount <= 0
+              ? "No Projects Left"
+              : data.ProjectCount + " Projects Left"}
+          </span>
+        </p>
         <input
           type="text"
           className="p-3 border-2 border-[#0A2D28] rounded mt-5 w-full text-sm"
@@ -81,7 +87,11 @@ const NewProject = () => {
       <div className="mt-10">
         <p className="text-lg">
           Select Storage Size{" "}
-          <span className="text-xs font-medium">{data.StorageSize<=0?"No Space Left": data.StorageSize+"MB Left"}</span>
+          <span className="text-xs font-medium">
+            {data.StorageSize <= 0
+              ? "No Space Left"
+              : Math.round(data.StorageSize, 2) + "MB Left"}
+          </span>
         </p>
         {projectsize}
         <Slider setStorage={setStorage} data={data} />

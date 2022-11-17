@@ -10,7 +10,7 @@ import {
 import { IoIosAnalytics } from "react-icons/io";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import {signOut} from "next-auth/react"
+import { signOut } from "next-auth/react";
 
 const SideMenu = () => {
   const query = useRouter();
@@ -52,19 +52,6 @@ const SideMenu = () => {
             <p className="hidden sm:flex">Projects</p>
           </Link>
           <Link
-            href="#analytics"
-            className={`flex items-center gap-2 ${
-              query.asPath.split("#")[1] === "analytics"
-                ? "underline underline-offset-4"
-                : ""
-            }`}
-          >
-            <span className="text-xl sm:text-lg">
-              <IoIosAnalytics />
-            </span>
-            <p className="hidden sm:flex">Analytics</p>
-          </Link>
-          <Link
             href="#subscription"
             className={`flex items-center gap-2 ${
               query.asPath.split("#")[1] === "subscription"
@@ -80,13 +67,23 @@ const SideMenu = () => {
         </div>
       </div>
       <div className="flex flex-col gap-5 text-sm lg:text-base">
-        <div className="flex items-center gap-2" onClick={()=>signOut}>
+        <Link
+          href="#settings"
+          className={`flex items-center gap-2 ${
+            query.asPath.split("#")[1] === "settings"
+              ? "underline underline-offset-4"
+              : ""
+          }`}
+        >
           <span className="text-xl sm:text-lg">
             <RiSettings6Line />
           </span>
           <p className="hidden sm:flex">Settings</p>
-        </div>
-        <div className="flex items-center gap-2">
+        </Link>
+        <div
+          className="flex items-center gap-2 cursor-pointer"
+          onClick={() => signOut}
+        >
           <span className="text-xl sm:text-lg">
             <RiLogoutCircleRLine />
           </span>

@@ -10,7 +10,6 @@ import Router from "next/router";
 const CreactAccount = () => {
   const { data: session, status } = useSession();
   useEffect(() => {
-    console.log(status);
     if (status === "authenticated") {
       instance
         .post("/userinfo", {
