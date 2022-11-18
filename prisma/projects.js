@@ -1,6 +1,7 @@
 // /prisma/user.js
 import instance from "../utils/axios";
 import prisma from "./prisma";
+import { deleteAllinfo } from "./template_userinfo";
 import { updateUserProject } from "./userinfo";
 
 // CreateUser
@@ -88,5 +89,6 @@ export const deleteproject = async (projectid, projectsize, userid) => {
       id: projectid,
     },
   });
+  await deleteAllinfo(projectid);
   await updateUserProject(userid, -Number(projectsize), -1);
 };

@@ -43,3 +43,16 @@ export const gettemplate_userinfo = async (projectid) => {
     result: result,
   };
 };
+
+
+export const deleteAllinfo = async (projectid)=>{
+  const res = await prisma.Template_Userinfo.deleteMany({
+    where: {
+      APIkey:projectid
+    },
+  })
+  return{
+    status: true,
+    result: res
+  }
+}

@@ -35,7 +35,7 @@ const Slider = ({setStorage,data}) => {
                 step={0.1}
                 defaultValue={1}
                 min={1}
-                max={data.StorageSize}
+                max={data?.StorageSize}
                 onChange={(e)=>setStorage(e.target.value)}
               />
             </div>
