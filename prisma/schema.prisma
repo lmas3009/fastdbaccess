@@ -17,12 +17,16 @@ model UserInfo {
 }
 
 model Projects {
-    id          String @id @default(auto()) @map("_id") @db.ObjectId
-    projectname String
-    projectsize String
-    template    String
-    userid      String
-    created_on  String
+    id                 String @id @default(auto()) @map("_id") @db.ObjectId
+    projectname        String
+    projectsize        String
+    template           String
+    userid             String
+    created_on         String
+    projectvaluescount String
+    last_updated       String
+    computesize        String
+    usedprojectsize    String
 }
 
 model Template_Userinfo {

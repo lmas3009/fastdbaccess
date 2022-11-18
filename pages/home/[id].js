@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import instance from "../../utils/axios";
 import Settings from "../Settings";
 import ProjectPage from "../Projectpage";
+import Dashboard from "./Dashboard";
 
 const Home = () => {
   const query = useRouter();
@@ -26,7 +27,7 @@ const Home = () => {
         ) : path === "newproject" ? (
           <NewProject />
         ) : path === "dashboard" || path === undefined ? (
-          "Dashboard"
+          <Dashboard/>
         ) : path === "settings" ? (
           <Settings />
         ) : path === "project" ? (

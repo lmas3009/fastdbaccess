@@ -85,6 +85,8 @@ const ProjectPage = () => {
       ? Template_ContactUs2
       : [];
 
+
+
   return (
     <div className="p-5 poppins">
       <div>
@@ -121,7 +123,7 @@ const ProjectPage = () => {
         ) : (
           <></>
         )}
-        <Tables data={projectdatastats} database={database} />
+        <Tables data={projectdatastats} database={database} pid={pid} />
       </div>
     </div>
   );

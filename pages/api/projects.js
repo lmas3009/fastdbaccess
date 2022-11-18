@@ -3,6 +3,7 @@ import {
   deleteproject,
   getProject,
   getProjectByid,
+  updateProjectComputeSIze,
 } from "../../prisma/projects";
 
 export default async function handler(req, res) {
@@ -58,6 +59,19 @@ export default async function handler(req, res) {
         res.send({
           status: false,
           error: "Failed to get",
+        });
+      });
+  } else if (req.method === "PUT") {
+    const { id,computesize } = req.body;
+    await updateProjectComputeSIze(id,computesize)
+      .then((result) => {
+        res.send(result);
+      })
+      .catch((err) => {
+        console.log(err);
+        res.send({
+          status: false,
+          error: "Failed to put",
         });
       });
   }

@@ -1,5 +1,6 @@
 // /prisma/user.js
 import prisma from "./prisma";
+import { updateProject } from "./projects";
 
 // CreateUser
 export const createtemplateuserinfo = async (
@@ -18,21 +19,27 @@ export const createtemplateuserinfo = async (
       projectid,
     },
   });
+  const res = await prisma.Template_Userinfo.findMany({
+    where: {
+      projectid: projectid,
+    },
+  });
+  await updateProject(projectid, res);
+
   return {
     status: true,
     result: "Data Saved",
   };
 };
 
-
-export const gettemplate_userinfo = async (projectid) =>{
-    const result = await prisma.Template_Userinfo.findMany({
-       where:{
-        projectid: projectid
-       }
-      });
-      return {
-        status: true,
-        result: result,
-      };
-}
+export const gettemplate_userinfo = async (projectid) => {
+  const result = await prisma.Template_Userinfo.findMany({
+    where: {
+      projectid: projectid,
+    },
+  });
+  return {
+    status: true,
+    result: result,
+  };
+};

@@ -1,4 +1,5 @@
 // /prisma/user.js
+import instance from "../utils/axios";
 import prisma from "./prisma";
 import { updateUserProject } from "./userinfo";
 
@@ -16,6 +17,10 @@ export const createProject = async (
       template: template,
       userid: userid,
       created_on: new Date().toString(),
+      projectvaluescount: "0",
+      last_updated: new Date().toString(),
+      computesize: "0 byte",
+      usedprojectsize: "0"
     },
   });
   await updateUserProject(userid, projectsize, 1);
@@ -45,6 +50,36 @@ export const getProjectByid = async (id) => {
     status: true,
     result: result,
   };
+};
+
+
+export const updateProject = async (id, _result) => {
+  const res = await prisma.Projects.findMany({
+    where: {
+      id: id,
+    },
+  });
+  const result = await prisma.Projects.update({
+    where: {
+      id: id,
+    },
+    data: {
+      projectvaluescount: (Number(res[0].projectvaluescount) + 1).toString(),
+      last_updated: new Date().toString(),
+    },
+  });
+};
+
+export const updateProjectComputeSIze = async (id, computesize) => {
+  console.log(computesize);
+  const result = await prisma.Projects.update({
+    where: {
+      id: id,
+    },
+    data: {
+     computesize: computesize
+    },
+  });
 };
 
 export const deleteproject = async (projectid, projectsize, userid) => {
