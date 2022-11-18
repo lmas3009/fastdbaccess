@@ -9,7 +9,7 @@ import {
 } from "react-icons/ri";
 import { IoIosAnalytics } from "react-icons/io";
 import Link from "next/link";
-import { useRouter } from "next/router";
+import Router, { useRouter } from "next/router";
 import { signOut } from "next-auth/react";
 
 const SideMenu = () => {
@@ -82,7 +82,12 @@ const SideMenu = () => {
         </Link>
         <div
           className="flex items-center gap-2 cursor-pointer"
-          onClick={() => signOut}
+          onClick={() => {
+            window.localStorage.removeItem("fastdbaccess_token")
+            window.localStorage.removeItem("fastdbaccess_analytics")
+            signOut
+            Router.push("/")
+          }}
         >
           <span className="text-xl sm:text-lg">
             <RiLogoutCircleRLine />

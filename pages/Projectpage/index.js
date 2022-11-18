@@ -3,13 +3,15 @@ import instance from "../../utils/axios";
 import Router, { useRouter } from "next/router";
 import Tables from "./tables";
 import Alert from "./alert";
+import ApiDocs from "./apidocs";
 
 const ProjectPage = () => {
   const [projectdata, setprojectdata] = useState([]);
   const [projectdatastats, setprojectdatastats] = useState([]);
   const [_delete, setdelete] = useState(false);
+  const [apishow, setapishow] = useState(false);
   const query = useRouter();
-  const {id} = query.query
+  const { id } = query.query;
   const pid = query.asPath.split("#")[2];
 
   useEffect(() => {
@@ -34,7 +36,7 @@ const ProjectPage = () => {
             });
         }
       });
-  }, [id]);
+  }, [id, pid]);
 
   const DeleteProject = (projectid, projectsize, userid) => {
     instance
@@ -85,12 +87,19 @@ const ProjectPage = () => {
       ? Template_ContactUs2
       : [];
 
-
+  const setapidocs = (e) => {
+    setapishow(e);
+  };
 
   return (
     <div className="p-5 poppins">
       <div>
-        {_delete?<Alert />:<></>}
+        {_delete ? <Alert /> : <></>}
+        {apishow ? (
+          <ApiDocs setapidocs={setapidocs} pid={pid} data={database} template={projectdata[0].template} />
+        ) : (
+          <></>
+        )}
         {projectdata.length > 0 ? (
           projectdata.map((item, index) => {
             return item.projectname ===
@@ -106,13 +115,21 @@ const ProjectPage = () => {
                   <p className="text-sm">Project Name: {item.projectname}</p>
                   <p className="text-sm">Project Template: {item.template}</p>
                   <p className="text-sm">Project Size: {item.projectsize} MB</p>
-                  <div
-                    onClick={() => {
-                      DeleteProject(item.id, item.projectsize, id);
-                    }}
-                    className="bg-white text-[#0A2D28] w-max pl-4 pr-4 p-1 cursor-pointer rounded"
-                  >
-                    Delete
+                  <div className="w-full flex items-center justify-between">
+                    <div
+                      onClick={() => {
+                        DeleteProject(item.id, item.projectsize, id);
+                      }}
+                      className="bg-white text-[#0A2D28] w-max pl-4 pr-4 p-1 cursor-pointer rounded"
+                    >
+                      Delete
+                    </div>
+                    <p
+                      className="bg-white text-[#0A2D28] w-max pl-4 pr-4 p-1 cursor-pointer rounded"
+                      onClick={() => setapishow(true)}
+                    >
+                      View Api
+                    </p>
                   </div>
                 </div>
               </div>

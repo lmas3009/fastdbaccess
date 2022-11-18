@@ -16,12 +16,12 @@ export const createtemplateuserinfo = async (
       Surname,
       Email,
       Age,
-      projectid,
+      APIkey:projectid,
     },
   });
   const res = await prisma.Template_Userinfo.findMany({
     where: {
-      projectid: projectid,
+      APIkey: projectid,
     },
   });
   await updateProject(projectid, res);
@@ -35,7 +35,7 @@ export const createtemplateuserinfo = async (
 export const gettemplate_userinfo = async (projectid) => {
   const result = await prisma.Template_Userinfo.findMany({
     where: {
-      projectid: projectid,
+      APIkey: projectid,
     },
   });
   return {
