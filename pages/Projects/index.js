@@ -3,7 +3,7 @@ import instance from "../../utils/axios";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import Link from "next/link";
-import {IoOpen} from "react-icons/io5"
+import { IoOpen } from "react-icons/io5";
 
 const Projects = () => {
   const query = useRouter();
@@ -12,15 +12,18 @@ const Projects = () => {
   const [projectdata, setprojectdata] = useState([]);
 
   useEffect(() => {
-    instance
-      .get("/projects", {
-        params: { id: id, projectbyid: false },
-      })
-      .then((res) => {
-        if (res.data.status) {
-          setprojectdata(res.data.result);
-        }
-      });
+    setTimeout(() => {
+      instance
+        .get("/projects", {
+          params: { id: id, projectbyid: false },
+        })
+        .then((res) => {
+          if (res.data.status) {
+            setprojectdata(res.data.result);
+          }
+        });
+      console.log("hie");
+    }, 1000);
   }, [id]);
 
   const modifytime = (time) => {
@@ -67,7 +70,7 @@ const Projects = () => {
                         className="text-xs cursor-pointer flex items-center gap-1"
                       >
                         open
-                        <IoOpen/>
+                        <IoOpen />
                       </Link>
                     </div>
                   </div>

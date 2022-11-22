@@ -1,16 +1,11 @@
 import { useEffect, useState } from "react";
-import Router, { useRouter } from "next/router";
 import instance from "../../utils/axios";
-import { signIn, signOut, useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 
 const Settings = () => {
   const { data: session, status } = useSession();
   const [data, setdata] = useState([]);
   const [loading, setLoading] = useState(false);
-  const baseURL =
-    process.env.NODE_ENV === "development"
-      ? "http://localhost:3000"
-      : process.env.BASE;
 
   useEffect(() => {
     if (status === "authenticated") {

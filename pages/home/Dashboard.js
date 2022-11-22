@@ -6,29 +6,30 @@ import { BsGraphUp } from "react-icons/bs";
 const Dashboard = () => {
   const [projects, setprojects] = useState([]);
   const [totalcount, settotalcount] = useState(0);
-  const [size, setsize] = useState("");
 
   const query = useRouter();
   const { id } = query.query;
 
   useEffect(() => {
-    instance
-      .get("/projects", {
-        params: {
-          id: id,
-          projectbyid: false,
-        },
-      })
-      .then((res) => {
-        if (res.data.status) {
-          setprojects(res.data.result);
-          var count = 0;
-          res.data.result.map((item, index) => {
-            count += Number(item.projectvaluescount);
-          });
-          settotalcount(count);
-        }
-      });
+    setTimeout(() => {
+      instance
+        .get("/projects", {
+          params: {
+            id: id,
+            projectbyid: false,
+          },
+        })
+        .then((res) => {
+          if (res.data.status) {
+            setprojects(res.data.result);
+            var count = 0;
+            res.data.result.map((item, index) => {
+              count += Number(item.projectvaluescount);
+            });
+            settotalcount(count);
+          }
+        });
+    }, 1000);
   }, [id, totalcount]);
 
   return (

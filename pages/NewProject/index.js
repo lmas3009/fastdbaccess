@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import { useEffect, useState } from "react";
 import PreviewTables from "./preivewtables";
 import Slider from "./slider";
@@ -44,15 +43,15 @@ const NewProject = () => {
   };
 
   const CreateProject = async () => {
-    setLoading(true)
+    setLoading(true);
     if (projectname === "") {
-      setLoading(false)
+      setLoading(false);
       alert("No project");
     } else if (projectsize === "") {
-      setLoading(false)
+      setLoading(false);
       alert("Select size");
     } else if (template === "None") {
-      setLoading(false)
+      setLoading(false);
       alert("Select template");
     } else {
       await instance
@@ -63,7 +62,7 @@ const NewProject = () => {
           userid: id,
         })
         .then((res) => {
-          setLoading(false)
+          setLoading(false);
           Router.back();
         });
     }

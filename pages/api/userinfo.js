@@ -1,9 +1,4 @@
-import {
-  createUser,
-  DeleteAccount,
-  getUser,
-  getUserID,
-} from "../../prisma/userinfo";
+import { createUser, DeleteAccount, getUser } from "../../prisma/userinfo";
 
 export default async function handler(req, res) {
   if (req.method === "POST") {

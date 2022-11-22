@@ -16,31 +16,33 @@ const ProjectPage = () => {
   const pid = query.asPath.split("#")[2];
 
   useEffect(() => {
-    instance
-      .get("/projects", {
-        params: {
-          id: pid,
-          projectbyid: true,
-        },
-      })
-      .then((res) => {
-        if (res.data.status) {
-          setprojectdata(res.data.result);
-          instance
-            .post("/projectstats", {
-              projectid: pid,
-            })
-            .then((res) => {
-              if (res.data.status) {
-                setprojectdatastats(res.data.result);
-              }
-            });
-        }
-      });
+    setTimeout(() => {
+      instance
+        .get("/projects", {
+          params: {
+            id: pid,
+            projectbyid: true,
+          },
+        })
+        .then((res) => {
+          if (res.data.status) {
+            setprojectdata(res.data.result);
+            instance
+              .post("/projectstats", {
+                projectid: pid,
+              })
+              .then((res) => {
+                if (res.data.status) {
+                  setprojectdatastats(res.data.result);
+                }
+              });
+          }
+        });
+    }, 1000);
   }, [id, pid]);
 
   const DeleteProject = (projectid, projectsize, userid) => {
-    setLoading(true)
+    setLoading(true);
     instance
       .delete("/projects", {
         params: {
@@ -50,7 +52,7 @@ const ProjectPage = () => {
         },
       })
       .then((res) => {
-        setLoading(false)
+        setLoading(false);
         setdelete(true);
         setTimeout(() => {
           Router.back();

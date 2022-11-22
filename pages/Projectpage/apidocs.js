@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { color, Select } from "@chakra-ui/react";
+import { Select } from "@chakra-ui/react";
 import Editor from "react-simple-code-editor";
 import { highlight, languages } from "prismjs/components/prism-core";
 import "prismjs/components/prism-clike";
@@ -13,7 +13,6 @@ const ApiDocs = ({ setapidocs, pid, data, template }) => {
     process.env.NODE_ENV === "development"
       ? "http://localhost:3000/api"
       : process.env.URL;
-
 
   //   "Name":"welcome",
   //  "Surname":"root",

@@ -62,7 +62,7 @@ export const getUserID = async (id) => {
   };
 };
 
-export const updateUserProject = async (id, StorageSize,projectcount) => {
+export const updateUserProject = async (id, StorageSize, projectcount) => {
   const get = await getUserID(id);
   const user = await prisma.UserInfo.update({
     where: { id },
@@ -70,7 +70,9 @@ export const updateUserProject = async (id, StorageSize,projectcount) => {
       StorageSize: (
         Number(get.result[0].StorageSize) - Number(StorageSize)
       ).toString(),
-      ProjectCount: (Number(get.result[0].ProjectCount) - projectcount).toString(),
+      ProjectCount: (
+        Number(get.result[0].ProjectCount) - projectcount
+      ).toString(),
     },
   });
 
@@ -95,17 +97,16 @@ export const updateAllUserProject = async (id) => {
   };
 };
 
-
 export const DeleteAccount = async (email) => {
   const result = await prisma.UserInfo.findMany({
     where: {
-      Email: email
+      Email: email,
     },
-  })
+  });
   await prisma.UserInfo.delete({
     where: {
-      id: result[0].id
-    }
-  })
+      id: result[0].id,
+    },
+  });
   return await deleteAllproject(result[0].id);
-}
+};

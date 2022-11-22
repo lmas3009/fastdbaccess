@@ -4,8 +4,7 @@ import Router, { useRouter } from "next/router";
 import NewProject from "../NewProject";
 import Projects from "../Projects";
 import Subscription from "../Subscriptions";
-import { useEffect, useState } from "react";
-import instance from "../../utils/axios";
+import { useEffect } from "react";
 import Settings from "../Settings";
 import ProjectPage from "../Projectpage";
 import Dashboard from "./Dashboard";
@@ -21,7 +20,6 @@ const Home = () => {
     } else if (status === "unauthenticated") {
       Router.push("/");
     }
-    
   }, [status, session]);
 
   return (

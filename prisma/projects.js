@@ -1,5 +1,4 @@
 // /prisma/user.js
-import instance from "../utils/axios";
 import prisma from "./prisma";
 import { deleteAllinfo } from "./template_userinfo";
 import { updateAllUserProject, updateUserProject } from "./userinfo";
@@ -28,11 +27,13 @@ export const createProject = async (
 };
 
 export const getProject = async (userid) => {
+  console.log(userid);
   const result = await prisma.Projects.findMany({
     where: {
       userid: userid,
     },
   });
+  console.log(result);
 
   return {
     status: true,

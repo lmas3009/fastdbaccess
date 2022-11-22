@@ -18,15 +18,13 @@ const Tables = ({ data, database, pid }) => {
           id: pid,
           computesize: size.toString(),
         })
-        .then((res) => {
-          
-        });
+        .then((res) => {});
 
       return size.toString();
     };
     const size = formatByteSize(Buffer?.byteLength(JSON.stringify(data)));
     setcomputesize(size);
-  }, [pid,data]);
+  }, [pid, data]);
 
   return (
     <div className="flex flex-col">
