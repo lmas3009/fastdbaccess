@@ -4,10 +4,14 @@ import Image from "next/image";
 import Logo from "../LandingPage/IntroSection/logo";
 import { Fade } from "react-reveal";
 import styles from "../../styles/Home.module.css";
+import Head from "next/head";
 
 function ContactUs() {
   return (
     <div className="relative w-full h-full poppins bg-white">
+      <Head>
+        <title>fastdbaccess | Contact Us</title>
+      </Head>
       <Image
         alt="vectorimg"
         src={"/assets/vectorimg.png"}

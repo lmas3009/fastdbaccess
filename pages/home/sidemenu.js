@@ -84,8 +84,7 @@ const SideMenu = () => {
           onClick={() => {
             window.localStorage.removeItem("fastdbaccess_token");
             window.localStorage.removeItem("fastdbaccess_analytics");
-            signOut;
-            Router.push("/");
+            signOut({ callbackUrl: "https://fastdbaccess.vercel.app" });
           }}
         >
           <span className="text-xl sm:text-lg">

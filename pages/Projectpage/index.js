@@ -4,6 +4,7 @@ import Router, { useRouter } from "next/router";
 import Tables from "./tables";
 import Alert from "./alert";
 import ApiDocs from "./apidocs";
+import Head from "next/head";
 
 const ProjectPage = () => {
   const [projectdata, setprojectdata] = useState([]);
@@ -98,6 +99,19 @@ const ProjectPage = () => {
 
   return (
     <div className="p-5 poppins">
+      <Head>
+        <title>
+          {projectdata.length > 0 ? (
+            projectdata[0].projectname +
+            " | " +
+            projectdata[0].template +
+            " | " +
+            "fastdbaccess | project"
+          ) : (
+            <></>
+          )}
+        </title>
+      </Head>
       <div>
         {_delete ? <Alert /> : <></>}
         {apishow ? (

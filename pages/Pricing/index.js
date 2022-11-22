@@ -4,9 +4,13 @@ import Logo from "../LandingPage/IntroSection/logo";
 import Image from "next/image";
 import { Fade } from "react-reveal";
 import styles from "../../styles/Home.module.css";
+import Head from "next/head";
 
 const Pricing = () => (
   <div className="relative w-full h-full bg-white">
+    <Head>
+      <title>fastdbaccess | Pricing</title>
+    </Head>
     <Image
       alt="vectorimg"
       src={"/assets/vectorimg.png"}

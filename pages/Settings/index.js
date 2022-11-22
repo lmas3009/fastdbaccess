@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import instance from "../../utils/axios";
 import { signOut, useSession } from "next-auth/react";
+import Head from "next/head";
 
 const Settings = () => {
   const { data: session, status } = useSession();
@@ -44,6 +45,9 @@ const Settings = () => {
 
   return (
     <div className="p-5 poppins">
+      <Head>
+        <title>fastdbaccess | Settings</title>
+      </Head>
       <div className="flex flex-wrap mt-5 gap-5">
         <div className="w-52 h-44 bg-[#0a2d28] rounded flex flex-col justify-between p-5 text-white">
           <p className="text-xl">Storage Used</p>

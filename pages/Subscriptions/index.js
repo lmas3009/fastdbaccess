@@ -1,7 +1,12 @@
+import Head from "next/head";
+
 /* eslint-disable @next/next/no-img-element */
 const Subscriptions = () => {
   return (
     <div className="p-5 poppins">
+      <Head>
+        <title>fastdbaccess | Subscriptions</title>
+      </Head>
       <div className="w-80  mb-4 mt-5">
         <div className="py-5 px-4 bg-white border border-gray-200shadow rounded-lg text-left">
           <h4 className="text-2xl text-[#0A2D28] font-semibold pb-8">Basic</h4>

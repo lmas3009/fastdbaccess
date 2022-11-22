@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 import Link from "next/link";
 import { IoOpen } from "react-icons/io5";
+import Head from "next/head";
 
 const Projects = () => {
   const query = useRouter();
@@ -33,6 +34,9 @@ const Projects = () => {
 
   return (
     <div className="p-5 poppins">
+      <Head>
+        <title>fastdbaccess | Projects</title>
+      </Head>
       <p>Find all your Projects</p>
       <div className="flex flex-wrap gap-5 mt-10">
         {projectdata.length > 0 ? (

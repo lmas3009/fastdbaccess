@@ -5,6 +5,7 @@ import Slider from "./slider";
 import instance from "../../utils/axios";
 import Router, { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
+import Head from "next/head";
 
 const NewProject = () => {
   const [projectname, setprojectname] = useState("");
@@ -70,6 +71,9 @@ const NewProject = () => {
 
   return (
     <div className="p-5 bg-white text-black poppins">
+      <Head>
+        <title>fastdbaccess | New Project</title>
+      </Head>
       {/* New project input tag */}
       <div>
         <p className="text-lg">

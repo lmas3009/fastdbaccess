@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import { useSession } from "next-auth/react";
 import instance from "../../../utils/axios";
 import Router from "next/router";
+import Head from "next/head";
 
 const CreactAccount = () => {
   const { data: session, status } = useSession();
@@ -34,6 +35,9 @@ const CreactAccount = () => {
   }, [status, session]);
   return (
     <div className="w-full h-[100vh] flex items-center justify-between poppins">
+    <Head>
+      <title>fastdbaccess | Google Authentication</title>
+    </Head>
       <div className="flex w-full items-center justify-center">
         <div className="flex flex-col items-center sm:items-start">
           <Logo font="large" />

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import instance from "../../utils/axios";
 import { useRouter } from "next/router";
 import { BsGraphUp } from "react-icons/bs";
+import Head from "next/head";
 
 const Dashboard = () => {
   const [projects, setprojects] = useState([]);
@@ -34,6 +35,9 @@ const Dashboard = () => {
 
   return (
     <div className="p-5 poppins">
+      <Head>
+        <title>fastdbaccess | Dashboard</title>
+      </Head>
       <p>Overview on your Projects</p>
       <div className="h-28 w-60 flex flex-col justify-between bg-[#0A2D28] mt-5 mb-5 rounded p-5">
         <p className="text-white text-base">Project Count Stats</p>
