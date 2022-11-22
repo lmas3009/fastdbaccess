@@ -24,7 +24,9 @@ const Projects = () => {
           if (res.data.status) {
             setprojectdata(res.data.result);
           }
-        });
+        }).catch((err)=>{
+          console.log(err);
+        })
     }, 1000);
   }, [id]);
 

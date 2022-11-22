@@ -32,7 +32,7 @@ export default async function handler(req, res) {
           console.log(err);
           res.send({
             status: false,
-            error: "Failed to get",
+            error: "Failed to get123",
           });
         });
     } else {
