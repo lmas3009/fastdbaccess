@@ -23,7 +23,8 @@ export const createProject = async (
       usedprojectsize: "0",
     },
   });
-  await updateUserProject(userid, projectsize, 1);
+  console.log(result);
+  return await updateUserProject(userid, projectsize, 1);
 };
 
 export const getProject = async (userid) => {

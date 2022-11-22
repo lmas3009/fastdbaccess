@@ -9,6 +9,7 @@ import {
 export default async function handler(req, res) {
   if (req.method === "POST") {
     const { projectname, projectsize, template, userid } = req.body;
+    console.log(projectname,projectsize,template,userid);
     await createProject(projectname, projectsize, template, userid)
       .then((result) => {
         res.send(result);

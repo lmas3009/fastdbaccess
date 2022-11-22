@@ -19,11 +19,12 @@ const Projects = () => {
           params: { id: id, projectbyid: false },
         })
         .then((res) => {
+          console.log("hie");
+          console.log(res);
           if (res.data.status) {
             setprojectdata(res.data.result);
           }
         });
-      console.log("hie");
     }, 1000);
   }, [id]);
 

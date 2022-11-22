@@ -63,8 +63,10 @@ const NewProject = () => {
           userid: id,
         })
         .then((res) => {
-          setLoading(false);
-          Router.back();
+          if (res.data.status) {
+            setLoading(false);
+            Router.back();
+          }
         });
     }
   };
