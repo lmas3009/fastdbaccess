@@ -109,7 +109,7 @@ const Dashboard = () => {
                             {item.computesize}
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                            {item.last_updated}
+                            {item.last_updated?.split(" ")[0]+" "+item.last_updated?.split(" ")[1]+" "+item.last_updated?.split(" ")[2]+" "+item.last_updated?.split(" ")[3]+" "+item.last_updated?.split(" ")[4]}
                           </td>
                         </tr>
                       );
