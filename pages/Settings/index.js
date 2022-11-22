@@ -39,7 +39,7 @@ const Settings = () => {
         .then((res) => {
           setLoading(false);
           if (res.data.status) {
-            signOut({ callbackUrl: baseURL });
+            signOut({ callbackUrl: "https://fastdbaccess.vercel.app" });
           }
         });
     } else {
