@@ -19,7 +19,7 @@ const Tables = ({ data, database, pid }) => {
           computesize: size.toString(),
         })
         .then((res) => {
-          console.log(res);
+          
         });
 
       return size.toString();
@@ -88,7 +88,7 @@ const Tables = ({ data, database, pid }) => {
                 ) : (
                   <tr className="bg-white border-b">
                     <td
-                      colspan={database?.length + 1}
+                      colSpan={database?.length + 1}
                       className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap text-center"
                     >
                       No Data Found

@@ -3,6 +3,7 @@ import instance from "../../utils/axios";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import Link from "next/link";
+import {IoOpen} from "react-icons/io5"
 
 const Projects = () => {
   const query = useRouter();
@@ -63,9 +64,10 @@ const Projects = () => {
                           )
                         }
                         href={"#project#" + item.id}
-                        className="text-xs cursor-pointer"
+                        className="text-xs cursor-pointer flex items-center gap-1"
                       >
                         open
+                        <IoOpen/>
                       </Link>
                     </div>
                   </div>

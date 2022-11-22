@@ -1,5 +1,6 @@
 // /prisma/user.js
 import prisma from "./prisma";
+import { deleteAllproject } from "./projects";
 
 // CreateUser
 export const createUser = async (email, name, profile) => {
@@ -78,3 +79,33 @@ export const updateUserProject = async (id, StorageSize,projectcount) => {
     result: user,
   };
 };
+
+export const updateAllUserProject = async (id) => {
+  const user = await prisma.UserInfo.update({
+    where: { id },
+    data: {
+      StorageSize: "20",
+      ProjectCount: "5",
+    },
+  });
+
+  return {
+    status: true,
+    result: user,
+  };
+};
+
+
+export const DeleteAccount = async (email) => {
+  const result = await prisma.UserInfo.findMany({
+    where: {
+      Email: email
+    },
+  })
+  await prisma.UserInfo.delete({
+    where: {
+      id: result[0].id
+    }
+  })
+  return await deleteAllproject(result[0].id);
+}

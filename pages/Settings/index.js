@@ -1,11 +1,16 @@
 import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
+import Router, { useRouter } from "next/router";
 import instance from "../../utils/axios";
 import { signIn, signOut, useSession } from "next-auth/react";
 
 const Settings = () => {
   const { data: session, status } = useSession();
   const [data, setdata] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const baseURL =
+    process.env.NODE_ENV === "development"
+      ? "http://localhost:3000"
+      : process.env.BASE;
 
   useEffect(() => {
     if (status === "authenticated") {
@@ -21,6 +26,26 @@ const Settings = () => {
         });
     }
   }, [status, session]);
+
+  const DeleteAccount = () => {
+    setLoading(true);
+    if (status === "authenticated") {
+      instance
+        .delete("/userinfo", {
+          params: {
+            email: session.user.email,
+          },
+        })
+        .then((res) => {
+          setLoading(false);
+          if (res.data.status) {
+            signOut({ callbackUrl: baseURL });
+          }
+        });
+    } else {
+      setLoading(false);
+    }
+  };
 
   return (
     <div className="p-5 poppins">
@@ -42,7 +67,34 @@ const Settings = () => {
           </div>
         </div>
       </div>
-      <div className="mt-10 p-2 bg-[#0a2d28] w-max rounded text-white pl-5 pr-5 cursor-pointer">
+      <div
+        onClick={() => DeleteAccount()}
+        className="mt-10 p-2 bg-[#0a2d28] w-max rounded text-white pl-5 pr-5 cursor-pointer flex items-center gap-3"
+      >
+        {loading ? (
+          <svg
+            className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <circle
+              className="opacity-25"
+              cx="12"
+              cy="12"
+              r="10"
+              stroke="currentColor"
+              strokwidth="4"
+            ></circle>
+            <path
+              className="opacity-75"
+              fill="currentColor"
+              d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+            ></path>
+          </svg>
+        ) : (
+          <></>
+        )}
         <p>Delete Account</p>
       </div>
     </div>

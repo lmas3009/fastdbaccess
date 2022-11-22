@@ -1,4 +1,9 @@
-import { createUser, getUser, getUserID } from "../../prisma/userinfo";
+import {
+  createUser,
+  DeleteAccount,
+  getUser,
+  getUserID,
+} from "../../prisma/userinfo";
 
 export default async function handler(req, res) {
   if (req.method === "POST") {
@@ -29,6 +34,18 @@ export default async function handler(req, res) {
           });
         });
     }
-  } else {
+  } else if (req.method === "DELETE") {
+    const { email } = req.query;
+    await DeleteAccount(email)
+      .then((result) => {
+        res.send(result);
+      })
+      .catch((err) => {
+        console.log(err);
+        res.send({
+          status: false,
+          error: "Failed to delete",
+        });
+      });
   }
 }

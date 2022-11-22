@@ -2,7 +2,7 @@
 import instance from "../utils/axios";
 import prisma from "./prisma";
 import { deleteAllinfo } from "./template_userinfo";
-import { updateUserProject } from "./userinfo";
+import { updateAllUserProject, updateUserProject } from "./userinfo";
 
 // CreateUser
 export const createProject = async (
@@ -21,7 +21,7 @@ export const createProject = async (
       projectvaluescount: "0",
       last_updated: new Date().toString(),
       computesize: "0 byte",
-      usedprojectsize: "0"
+      usedprojectsize: "0",
     },
   });
   await updateUserProject(userid, projectsize, 1);
@@ -53,7 +53,6 @@ export const getProjectByid = async (id) => {
   };
 };
 
-
 export const updateProject = async (id, _result) => {
   const res = await prisma.Projects.findMany({
     where: {
@@ -72,15 +71,18 @@ export const updateProject = async (id, _result) => {
 };
 
 export const updateProjectComputeSIze = async (id, computesize) => {
-  console.log(computesize);
   const result = await prisma.Projects.update({
     where: {
       id: id,
     },
     data: {
-     computesize: computesize
+      computesize: computesize,
     },
   });
+  return {
+    status: true,
+    result: result,
+  };
 };
 
 export const deleteproject = async (projectid, projectsize, userid) => {
@@ -91,4 +93,29 @@ export const deleteproject = async (projectid, projectsize, userid) => {
   });
   await deleteAllinfo(projectid);
   await updateUserProject(userid, -Number(projectsize), -1);
+};
+
+export const deleteAllproject = async (userid) => {
+  const result = await prisma.Projects.findMany({
+    where: {
+      userid: userid,
+    },
+  });
+  if (Object.keys(result).length === 0) {
+    console.log("undefined bye");
+  } else {
+    result.map(async (item, index) => {
+      await prisma.Projects.delete({
+        where: {
+          id: item.id,
+        },
+      });
+      await deleteAllinfo(item.id);
+      await updateAllUserProject(item.userid);
+    });
+  }
+  return{
+    status: true,
+    result: "Account Deleted"
+  }
 };

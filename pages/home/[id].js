@@ -1,6 +1,6 @@
 import Header from "./header";
 import SideMenu from "./sidemenu";
-import { useRouter } from "next/router";
+import Router, { useRouter } from "next/router";
 import NewProject from "../NewProject";
 import Projects from "../Projects";
 import Subscription from "../Subscriptions";
@@ -9,11 +9,20 @@ import instance from "../../utils/axios";
 import Settings from "../Settings";
 import ProjectPage from "../Projectpage";
 import Dashboard from "./Dashboard";
+import { useSession } from "next-auth/react";
 
 const Home = () => {
   const query = useRouter();
-  const { id, menu } = query.query;
   const path = query.asPath.split("#")[1];
+  const { data: session, status } = useSession();
+
+  useEffect(() => {
+    if (status === "authenticated") {
+    } else if (status === "unauthenticated") {
+      Router.push("/");
+    }
+    
+  }, [status, session]);
 
   return (
     <div className="flex w-full h-[100vh] text-black bg-white">
@@ -27,7 +36,7 @@ const Home = () => {
         ) : path === "newproject" ? (
           <NewProject />
         ) : path === "dashboard" || path === undefined ? (
-          <Dashboard/>
+          <Dashboard />
         ) : path === "settings" ? (
           <Settings />
         ) : path === "project" ? (

@@ -12,6 +12,7 @@ const NewProject = () => {
   const [projectsize, setprojectsize] = useState("");
   const [template, settemplate] = useState("None");
   const [showtables, setshowtables] = useState(false);
+  const [loading, setLoading] = useState(false);
   const { data: session, status } = useSession();
   const [data, setdata] = useState([]);
 
@@ -43,11 +44,15 @@ const NewProject = () => {
   };
 
   const CreateProject = async () => {
+    setLoading(true)
     if (projectname === "") {
+      setLoading(false)
       alert("No project");
     } else if (projectsize === "") {
+      setLoading(false)
       alert("Select size");
     } else if (template === "None") {
+      setLoading(false)
       alert("Select template");
     } else {
       await instance
@@ -58,6 +63,7 @@ const NewProject = () => {
           userid: id,
         })
         .then((res) => {
+          setLoading(false)
           Router.back();
         });
     }
@@ -93,7 +99,6 @@ const NewProject = () => {
               : Math.round(data.StorageSize, 2) + "MB Left"}
           </span>
         </p>
-        {projectsize}
         <Slider setStorage={setStorage} data={data} />
       </div>
 
@@ -199,9 +204,33 @@ const NewProject = () => {
 
       {/* Submit Project */}
       <div
-        className="bg-[#0A2D28] w-40 p-2 text-center text-white rounded cursor-pointer"
+        className="bg-[#0A2D28] w-max p-2 pl-4 pr-4 text-center text-white rounded cursor-pointer flex items-center gap-2 "
         onClick={() => CreateProject()}
       >
+        {loading ? (
+          <svg
+            className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <circle
+              className="opacity-25"
+              cx="12"
+              cy="12"
+              r="10"
+              stroke="currentColor"
+              strokwidth="4"
+            ></circle>
+            <path
+              className="opacity-75"
+              fill="currentColor"
+              d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+            ></path>
+          </svg>
+        ) : (
+          <></>
+        )}
         <p>Create Project</p>
       </div>
 
