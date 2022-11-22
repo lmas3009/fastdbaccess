@@ -4,7 +4,7 @@ import { deleteAllproject } from "./projects";
 
 // CreateUser
 export const createUser = async (email, name, profile) => {
-  const user1 = await prisma.UserInfo.findMany({
+  const user1 = await prisma.userinfo.findMany({
     where: { Email: email },
   });
   if (Object.keys(user1).length !== 0 && user1[0].Email === email) {
@@ -16,7 +16,7 @@ export const createUser = async (email, name, profile) => {
       result: result,
     };
   } else {
-    const result = await prisma.UserInfo.create({
+    const result = await prisma.userinfo.create({
       data: {
         Name: name,
         Email: email,
@@ -34,7 +34,7 @@ export const createUser = async (email, name, profile) => {
 
 // Read
 export const getUser = async (email) => {
-  const user = await prisma.UserInfo.findMany({
+  const user = await prisma.userinfo.findMany({
     where: { Email: email },
   });
   if (Object.keys(user).length !== 0 && user[0].Email === email) {
@@ -52,7 +52,7 @@ export const getUser = async (email) => {
 
 // Read All
 export const getUserID = async (id) => {
-  const user = await prisma.UserInfo.findMany({
+  const user = await prisma.userinfo.findMany({
     where: { id },
   });
 
@@ -64,7 +64,7 @@ export const getUserID = async (id) => {
 
 export const updateUserProject = async (id, StorageSize, projectcount) => {
   const get = await getUserID(id);
-  const user = await prisma.UserInfo.update({
+  const user = await prisma.userinfo.update({
     where: { id },
     data: {
       StorageSize: (
@@ -83,7 +83,7 @@ export const updateUserProject = async (id, StorageSize, projectcount) => {
 };
 
 export const updateAllUserProject = async (id) => {
-  const user = await prisma.UserInfo.update({
+  const user = await prisma.userinfo.update({
     where: { id },
     data: {
       StorageSize: "20",
@@ -98,12 +98,12 @@ export const updateAllUserProject = async (id) => {
 };
 
 export const DeleteAccount = async (email) => {
-  const result = await prisma.UserInfo.findMany({
+  const result = await prisma.userinfo.findMany({
     where: {
       Email: email,
     },
   });
-  await prisma.UserInfo.delete({
+  await prisma.userinfo.delete({
     where: {
       id: result[0].id,
     },

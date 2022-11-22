@@ -10,7 +10,7 @@ export const createProject = async (
   template,
   userid
 ) => {
-  const result = await prisma.Projects.create({
+  const result = await prisma.projects.create({
     data: {
       projectname: projectname,
       projectsize: projectsize,
@@ -29,7 +29,7 @@ export const createProject = async (
 
 export const getProject = async (userid) => {
   console.log(userid);
-  const result = await prisma.Projects.findMany({
+  const result = await prisma.projects.findMany({
     where: {
       userid: userid,
     },
@@ -43,7 +43,7 @@ export const getProject = async (userid) => {
 };
 
 export const getProjectByid = async (id) => {
-  const result = await prisma.Projects.findMany({
+  const result = await prisma.projects.findMany({
     where: {
       id: id,
     },
@@ -56,12 +56,12 @@ export const getProjectByid = async (id) => {
 };
 
 export const updateProject = async (id, _result) => {
-  const res = await prisma.Projects.findMany({
+  const res = await prisma.projects.findMany({
     where: {
       id: id,
     },
   });
-  const result = await prisma.Projects.update({
+  const result = await prisma.projects.update({
     where: {
       id: id,
     },

@@ -7,7 +7,7 @@ datasource db {
     url      = env("DATABASE_URL")
 }
 
-model UserInfo {
+model userinfo {
     id           String @id @default(auto()) @map("_id") @db.ObjectId
     Name         String
     Email        String
@@ -16,7 +16,7 @@ model UserInfo {
     StorageSize  String
 }
 
-model Projects {
+model projects {
     id                 String @id @default(auto()) @map("_id") @db.ObjectId
     projectname        String
     projectsize        String
@@ -29,7 +29,7 @@ model Projects {
     usedprojectsize    String
 }
 
-model Template_Userinfo {
+model template_userinfo {
     id         String   @id @default(auto()) @map("_id") @db.ObjectId
     Name       String
     Surname    String

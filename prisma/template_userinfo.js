@@ -10,7 +10,7 @@ export const createtemplateuserinfo = async (
   Age,
   projectid
 ) => {
-  const result = await prisma.Template_Userinfo.create({
+  const result = await prisma.template_userinfo.create({
     data: {
       Name,
       Surname,
@@ -19,7 +19,7 @@ export const createtemplateuserinfo = async (
       APIkey:projectid,
     },
   });
-  const res = await prisma.Template_Userinfo.findMany({
+  const res = await prisma.template_userinfo.findMany({
     where: {
       APIkey: projectid,
     },
@@ -33,7 +33,7 @@ export const createtemplateuserinfo = async (
 };
 
 export const gettemplate_userinfo = async (projectid) => {
-  const result = await prisma.Template_Userinfo.findMany({
+  const result = await prisma.template_userinfo.findMany({
     where: {
       APIkey: projectid,
     },
@@ -46,7 +46,7 @@ export const gettemplate_userinfo = async (projectid) => {
 
 
 export const deleteAllinfo = async (projectid)=>{
-  const res = await prisma.Template_Userinfo.deleteMany({
+  const res = await prisma.template_userinfo.deleteMany({
     where: {
       APIkey:projectid
     },
