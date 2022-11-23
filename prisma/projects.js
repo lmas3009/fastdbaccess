@@ -129,7 +129,17 @@ export const deleteAllproject = async (userid) => {
           id: item.id,
         },
       });
-      await deleteAllinfo(item.id);
+      if (item.template === "UserInfo Database") {
+        await deleteAllinfo_userinfo(item.id);
+      } else if (item.template === "Feedback Database") {
+        await deleteAllinfo_feedback(item.id);
+      } else if (item.template === "NewsLetter Database") {
+        await deleteAllinfo_newsletter(item.id);
+      } else if (item.template === "Contact Us Database") {
+        await deleteAllinfo_contactus(item.id);
+      } else if (item.template === "Contact Us 2 Database") {
+        await deleteAllinfo_contactus2(item.id);
+      }
       await updateAllUserProject(item.userid);
     });
   }
