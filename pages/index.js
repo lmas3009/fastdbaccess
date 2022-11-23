@@ -10,6 +10,7 @@ import { AiOutlineSafetyCertificate } from "react-icons/ai";
 import { Fade } from "react-reveal";
 import Logo from "./LandingPage/IntroSection/logo";
 import styles from "../styles/Home.module.css";
+import FDBA from "./LandingPage/fdba_intro";
 
 export default function Home() {
   const animationConfiguration = {
@@ -37,6 +38,7 @@ export default function Home() {
           <div className="h-full">
             <Header />
             <Intro />
+            <FDBA />
           </div>
           <motion.div
             variants={animationConfiguration}

@@ -34,7 +34,7 @@ const CreactAccount = () => {
     }
   }, [status, session]);
   return (
-    <div className="w-full h-[100vh] flex items-center justify-between poppins">
+    <div className="bg-white text-black w-full h-[100vh] flex items-center justify-between poppins">
     <Head>
       <title>fastdbaccess | Google Authentication</title>
     </Head>

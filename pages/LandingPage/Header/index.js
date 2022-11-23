@@ -71,11 +71,11 @@ const Header = () => {
             </Link>
           </div>
           <div className="flex">
-            <Link href="/Auth/create-account">
+            <div onClick={() => signIn()}>
               <p className="p-1 pl-5 pr-5 bg-[#0A2D28] rounded text-white">
                 Get Started
               </p>
-            </Link>
+            </div>
           </div>
         </div>
       ) : (

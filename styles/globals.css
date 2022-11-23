@@ -13,6 +13,13 @@ body {
     color: black;
 }
 
+.fdba{
+  background-image: url("../assets/bg-grid.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 
 @font-face {
   font-family: "Poppins";
