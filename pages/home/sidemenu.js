@@ -32,7 +32,7 @@ const SideMenu = () => {
                 : ""
             }`}
           >
-            <span className="text-xl sm:text-lg">
+            <span className="text-2xl sm:text-lg">
               <RiDashboardLine />
             </span>
             <p className="hidden sm:flex">Dashboard</p>
@@ -45,7 +45,7 @@ const SideMenu = () => {
                 : ""
             }`}
           >
-            <span className="text-xl sm:text-lg">
+            <span className="text-2xl sm:text-lg">
               <RiProjectorLine />
             </span>
             <p className="hidden sm:flex">Projects</p>
@@ -58,7 +58,7 @@ const SideMenu = () => {
                 : ""
             }`}
           >
-            <span className="text-xl sm:text-lg">
+            <span className="text-2xl sm:text-lg">
               <RiSecurePaymentLine />
             </span>
             <p className="hidden sm:flex">Subscriptions</p>
@@ -74,7 +74,7 @@ const SideMenu = () => {
               : ""
           }`}
         >
-          <span className="text-xl sm:text-lg">
+          <span className="text-2xl sm:text-lg">
             <RiSettings6Line />
           </span>
           <p className="hidden sm:flex">Settings</p>
@@ -87,7 +87,7 @@ const SideMenu = () => {
             signOut({ callbackUrl: "https://fastdbaccess.vercel.app" });
           }}
         >
-          <span className="text-xl sm:text-lg">
+          <span className="text-2xl sm:text-lg">
             <RiLogoutCircleRLine />
           </span>
           <p className="hidden sm:flex">Logout</p>

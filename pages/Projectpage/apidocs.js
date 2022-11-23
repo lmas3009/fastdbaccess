@@ -84,11 +84,13 @@ const ApiDocs = ({ setapidocs, pid, data, template }) => {
             <h1 className="text-center text-gray-800 dark:text-gray-100 font-lg font-bold tracking-normal leading-tight mb-4">
               {template}
             </h1>
-            <p className="text-center">API Key = {pid}</p>
+            <p className="text-center text-gray-800 dark:text-gray-100 ">
+              API Key = {pid}
+            </p>
             <div className="w-full flex flex-col items-center justify-center">
               <Select
                 placeholder="Select Language"
-                className="border-2 border-black rounded p-2 w-full flex items-center justify-center mt-5 mb-5"
+                className="border-2 border-black rounded p-2 w-full flex items-center justify-center mt-5 mb-5 bg-white text-black"
                 onChange={(e) => {
                   setselectvalue(e.target.value);
                 }}
@@ -101,12 +103,11 @@ const ApiDocs = ({ setapidocs, pid, data, template }) => {
                   value={pycode}
                   onValueChange={(code) => {}}
                   highlight={(code) => highlight(code, languages.py)}
-                  className="border-2 border-[#0A2D28] rounded mb-5"
+                  className="border-2 border-[#0A2D28] rounded mb-5 bg-white w-[250px] sm:w-full"
                   padding={10}
                   style={{
                     fontFamily: '"Fira code", "Fira Mono", monospace',
                     fontSize: 12,
-                    width: "400px",
                   }}
                 />
               ) : selectvalue === "nodejs" ? (
@@ -114,12 +115,11 @@ const ApiDocs = ({ setapidocs, pid, data, template }) => {
                   value={jscode}
                   onValueChange={(code) => {}}
                   highlight={(code) => highlight(code, languages.js)}
-                  className="border-2 border-[#0A2D28] rounded mb-5"
+                  className="border-2 border-[#0A2D28] rounded mb-5 bg-white w-[250px] sm:w-full"
                   padding={10}
                   style={{
                     fontFamily: '"Fira code", "Fira Mono", monospace',
                     fontSize: 12,
-                    width: "400px",
                   }}
                 />
               ) : (

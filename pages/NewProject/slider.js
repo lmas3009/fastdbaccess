@@ -30,7 +30,7 @@ const Slider = ({setStorage,data}) => {
               <div id="tooltip" className="p-2" />
               <input
                 id="range"
-                className="rounded text-sm border-2 border-slate-500 p-5"
+                className="rounded text-sm border-2 border-slate-500 p-5 bg-white text-black"
                 type="range"
                 step={0.1}
                 defaultValue={1}

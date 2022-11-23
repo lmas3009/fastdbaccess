@@ -89,7 +89,7 @@ const PreviewTables = ({ showTable, showtables, type }) => {
                     </label>
                     <input
                       id="name"
-                      className="mb-5 mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded border"
+                      className="mb-5 mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded border bg-white"
                       value={item}
                     />
                   </div>
