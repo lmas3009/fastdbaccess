@@ -1,57 +1,6 @@
-import React, { useState } from "react";
-import { Select } from "@chakra-ui/react";
-import Editor from "react-simple-code-editor";
-import { highlight, languages } from "prismjs/components/prism-core";
-import "prismjs/components/prism-clike";
-import "prismjs/components/prism-javascript";
-import "prismjs/components/prism-python";
-import "prismjs/themes/prism.css";
+import {IoOpen} from "react-icons/io5"
 
 const ApiDocs = ({ setapidocs, pid, data, template }) => {
-  const [selectvalue, setselectvalue] = useState("");
-  const baseURL = "https://fastdbaccess.vercel.app/api";
-
-  const api_endpoint =
-    template === "UserInfo Database"
-      ? "template_userinfo"
-      : template === "Feedback Database"
-      ? "template_feedback"
-      : template === "Contact Us Database"
-      ? "template_contactus"
-      : template === "Contact Us 2 Database"
-      ? "template_contactus2"
-      : template === "NewsLetter Database"
-      ? "template_newsletter"
-      : "no information";
-
-  //   "Name":"welcome",
-  //  "Surname":"root",
-  //  "Email":"eolcome@root.com",
-  //  "Age":"14",
-  //  "apikey":"6376e2687b1f5cb5c1f4a14d"
-  var py_data = "{";
-  data?.map((item, index) => {
-    if (item !== "Created_on") {
-      py_data += "\n";
-      py_data += `"${item}": "",`;
-    }
-  });
-  py_data += `\n"APIkey": "${pid}"`;
-  py_data += "\n}";
-
-  var js_data = "{";
-  data?.map((item, index) => {
-    if (item !== "Created_on") {
-      js_data += "\n";
-      js_data += `${item}: "",`;
-    }
-  });
-  js_data += `\nAPIkey: "${pid}"`;
-  js_data += "\n}";
-
-  var pycode = `import requests\n url = '${baseURL}/${api_endpoint}'\n myobj = ${py_data}\nx = requests.post(url, json = myobj)\nprint(x.text)`;
-  var jscode = `axios\n.post("${baseURL}/${api_endpoint}", ${js_data})\n .then(function (response) {\n console.log(response);\n })\n .catch(function (error) {\n console.log(error);\n });`;
-
   return (
     <div>
       <div
@@ -87,47 +36,8 @@ const ApiDocs = ({ setapidocs, pid, data, template }) => {
             <p className="text-center text-gray-800 dark:text-gray-100 ">
               API Key = {pid}
             </p>
-            <div className="w-full flex flex-col items-center justify-center">
-              <Select
-                placeholder="Select Language"
-                className="border-2 border-black rounded p-2 w-full flex items-center justify-center mt-5 mb-5 bg-white text-black"
-                onChange={(e) => {
-                  setselectvalue(e.target.value);
-                }}
-              >
-                <option value="python">Python</option>
-                <option value="nodejs">NodeJs</option>
-              </Select>
-              {selectvalue === "python" ? (
-                <Editor
-                  value={pycode}
-                  onValueChange={(code) => {}}
-                  highlight={(code) => highlight(code, languages.py)}
-                  className="border-2 border-[#0A2D28] rounded mb-5 bg-white w-[250px] sm:w-full"
-                  padding={10}
-                  style={{
-                    fontFamily: '"Fira code", "Fira Mono", monospace',
-                    fontSize: 12,
-                  }}
-                />
-              ) : selectvalue === "nodejs" ? (
-                <Editor
-                  value={jscode}
-                  onValueChange={(code) => {}}
-                  highlight={(code) => highlight(code, languages.js)}
-                  className="border-2 border-[#0A2D28] rounded mb-5 bg-white w-[250px] sm:w-full"
-                  padding={10}
-                  style={{
-                    fontFamily: '"Fira code", "Fira Mono", monospace',
-                    fontSize: 12,
-                  }}
-                />
-              ) : (
-                <></>
-              )}
-              {/* */}
-            </div>
-            <div className="flex items-center justify-center w-full">
+            <a href="http://localhost:3000/APIs/apidocs" target={"_blank"} rel="noreferrer" className="text-center p-5 underline w-full flex items-center justify-center gap-2">View API Documentation <IoOpen/></a>
+            <div className="flex items-center justify-center w-full mt-5">
               <button
                 className="focus:outline-none ml-3 bg-[#0A2D28] text-white transition duration-150  ease-in-out hover:border-gray-400 hover:bg-gray-800 border rounded px-8 py-2 text-sm"
                 onClick={() => setapidocs(false)}

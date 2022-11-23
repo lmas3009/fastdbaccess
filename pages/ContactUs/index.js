@@ -16,11 +16,11 @@ function ContactUs() {
 
   const submitFeedback = () => {
     axios
-      .post("http://localhost:3000/api/template_feedback", {
+      .post("https://fastdbaccess.vercel.app/api/template_feedback", {
         Name: name,
         Email: email,
         Feedback: feedback,
-        APIkey: "637e05d51d2472e86175c212",
+        APIkey: "637e0b1171989969764bdabf",
       })
       .then(function (response) {
         if(response.data.status){
