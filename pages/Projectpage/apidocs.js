@@ -36,7 +36,7 @@ const ApiDocs = ({ setapidocs, pid, data, template }) => {
             <p className="text-center text-gray-800 dark:text-gray-100 ">
               API Key = {pid}
             </p>
-            <a href="http://localhost:3000/APIs/apidocs" target={"_blank"} rel="noreferrer" className="text-center p-5 underline w-full flex items-center justify-center gap-2">View API Documentation <IoOpen/></a>
+            <a href="https://fastdbaccess.vercel.app/APIs/apidocs" target={"_blank"} rel="noreferrer" className="text-center p-5 underline w-full flex items-center justify-center gap-2">View API Documentation <IoOpen/></a>
             <div className="flex items-center justify-center w-full mt-5">
               <button
                 className="focus:outline-none ml-3 bg-[#0A2D28] text-white transition duration-150  ease-in-out hover:border-gray-400 hover:bg-gray-800 border rounded px-8 py-2 text-sm"
