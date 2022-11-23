@@ -1,6 +1,10 @@
 // /prisma/user.js
 import prisma from "./prisma";
-import { deleteAllinfo } from "./template_userinfo";
+import { deleteAllinfo_userinfo } from "./template_userinfo";
+import { deleteAllinfo_newsletter } from "./template_newsletter";
+import { deleteAllinfo_contactus } from "./template_contactus";
+import { deleteAllinfo_contactus2 } from "./template_contactus2";
+import { deleteAllinfo_feedback } from "./template_feedback";
 import { updateAllUserProject, updateUserProject } from "./userinfo";
 
 // CreateUser
@@ -23,18 +27,15 @@ export const createProject = async (
       usedprojectsize: "0",
     },
   });
-  console.log(result);
   return await updateUserProject(userid, projectsize, 1);
 };
 
 export const getProject = async (userid) => {
-  console.log(userid);
   const result = await prisma.projects.findMany({
     where: {
       userid: userid,
     },
   });
-  console.log(result);
 
   return {
     status: true,
@@ -87,13 +88,29 @@ export const updateProjectComputeSIze = async (id, computesize) => {
   };
 };
 
-export const deleteproject = async (projectid, projectsize, userid) => {
+export const deleteproject = async (
+  projectid,
+  projectsize,
+  userid,
+  template
+) => {
   const result = await prisma.Projects.delete({
     where: {
       id: projectid,
     },
   });
-  await deleteAllinfo(projectid);
+  if (template === "UserInfo Database") {
+    await deleteAllinfo_userinfo(projectid);
+  } else if (template === "Feedback Database") {
+    await deleteAllinfo_feedback(projectid);
+  } else if (template === "NewsLetter Database") {
+    await deleteAllinfo_newsletter(projectid);
+  } else if (template === "Contact Us Database") {
+    await deleteAllinfo_contactus(projectid);
+  } else if (template === "Contact Us 2 Database") {
+    await deleteAllinfo_contactus2(projectid);
+  }
+
   await updateUserProject(userid, -Number(projectsize), -1);
 };
 
@@ -116,8 +133,8 @@ export const deleteAllproject = async (userid) => {
       await updateAllUserProject(item.userid);
     });
   }
-  return{
+  return {
     status: true,
-    result: "Account Deleted"
-  }
+    result: "Account Deleted",
+  };
 };

@@ -3,23 +3,15 @@ import prisma from "./prisma";
 import { updateProject } from "./projects";
 
 // CreateUser
-export const createtemplateuserinfo = async (
-  Name,
-  Surname,
-  Email,
-  Age,
-  projectid
-) => {
-  const result = await prisma.template_userinfo.create({
+export const createtemplate_newsletter = async (Name, Email, projectid) => {
+  const result = await prisma.template_newsletter.create({
     data: {
       Name,
-      Surname,
       Email,
-      Age,
       APIkey: projectid,
     },
   });
-  const res = await prisma.template_userinfo.findMany({
+  const res = await prisma.template_newsletter.findMany({
     where: {
       APIkey: projectid,
     },
@@ -32,8 +24,8 @@ export const createtemplateuserinfo = async (
   };
 };
 
-export const gettemplate_userinfo = async (projectid) => {
-  const result = await prisma.template_userinfo.findMany({
+export const gettemplate_newsletter = async (projectid) => {
+  const result = await prisma.template_newsletter.findMany({
     where: {
       APIkey: projectid,
     },
@@ -44,8 +36,8 @@ export const gettemplate_userinfo = async (projectid) => {
   };
 };
 
-export const deleteAllinfo_userinfo = async (projectid) => {
-  const res = await prisma.template_userinfo.deleteMany({
+export const deleteAllinfo_newsletter = async (projectid) => {
+  const res = await prisma.template_newsletter.deleteMany({
     where: {
       APIkey: projectid,
     },

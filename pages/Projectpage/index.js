@@ -31,6 +31,7 @@ const ProjectPage = () => {
             instance
               .post("/projectstats", {
                 projectid: pid,
+                template: res.data.result[0]?.template
               })
               .then((res) => {
                 if (res.data.status) {
@@ -42,7 +43,7 @@ const ProjectPage = () => {
     }, 1000);
   }, [id, pid]);
 
-  const DeleteProject = (projectid, projectsize, userid) => {
+  const DeleteProject = (projectid, projectsize, userid,template) => {
     setLoading(true);
     instance
       .delete("/projects", {
@@ -50,6 +51,7 @@ const ProjectPage = () => {
           projectid: projectid,
           projectsize: projectsize,
           userid: userid,
+          template: template
         },
       })
       .then((res) => {
@@ -142,7 +144,7 @@ const ProjectPage = () => {
                   <div className="w-full flex items-center justify-between">
                     <div
                       onClick={() => {
-                        DeleteProject(item.id, item.projectsize, id);
+                        DeleteProject(item.id, item.projectsize, id,item.template);
                       }}
                       className="bg-white text-[#0A2D28] w-max pl-4 pr-4 p-1 cursor-pointer rounded flex items-center gap-2"
                     >

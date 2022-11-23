@@ -9,10 +9,20 @@ import "prismjs/themes/prism.css";
 
 const ApiDocs = ({ setapidocs, pid, data, template }) => {
   const [selectvalue, setselectvalue] = useState("");
-  const baseURL =
-    process.env.NODE_ENV === "development"
-      ? "http://localhost:3000/api"
-      : process.env.URL;
+  const baseURL = "https://fastdbaccess.vercel.app/api";
+
+  const api_endpoint =
+    template === "UserInfo Database"
+      ? "template_userinfo"
+      : template === "Feedback Database"
+      ? "template_feedback"
+      : template === "Contact Us Database"
+      ? "template_contactus"
+      : template === "Contact Us 2 Database"
+      ? "template_contactus2"
+      : template === "NewsLetter Database"
+      ? "template_newsletter"
+      : "no information";
 
   //   "Name":"welcome",
   //  "Surname":"root",
@@ -39,8 +49,8 @@ const ApiDocs = ({ setapidocs, pid, data, template }) => {
   js_data += `\nAPIkey: "${pid}"`;
   js_data += "\n}";
 
-  var pycode = `import requests\n url = '${baseURL}/template_userinfo'\n myobj = ${py_data}\nx = requests.post(url, json = myobj)\nprint(x.text)`;
-  var jscode = `axios\n.post("${baseURL}/template_userinfo", ${js_data})\n .then(function (response) {\n console.log(response);\n })\n .catch(function (error) {\n console.log(error);\n });`;
+  var pycode = `import requests\n url = '${baseURL}/${api_endpoint}'\n myobj = ${py_data}\nx = requests.post(url, json = myobj)\nprint(x.text)`;
+  var jscode = `axios\n.post("${baseURL}/${api_endpoint}", ${js_data})\n .then(function (response) {\n console.log(response);\n })\n .catch(function (error) {\n console.log(error);\n });`;
 
   return (
     <div>

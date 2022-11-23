@@ -36,27 +36,27 @@ model template_userinfo {
     Email      String
     Age        String
     Created_on DateTime @default(now())
-    APIkey  String
+    APIkey     String
 }
 
-model Template_Feedback {
+model template_feedback {
     id         String   @id @default(auto()) @map("_id") @db.ObjectId
     Name       String
     Email      String
     Feedback   String
     Created_on DateTime @default(now())
-    APIkey  String
+    APIkey     String
 }
 
-model Template_NewsLetter {
+model template_newsletter {
     id         String   @id @default(auto()) @map("_id") @db.ObjectId
     Name       String
     Email      String
     Created_on DateTime @default(now())
-    APIkey  String
+    APIkey     String
 }
 
-model Template_ContactUs {
+model template_contactus {
     id          String   @id @default(auto()) @map("_id") @db.ObjectId
     Name        String
     Email       String
@@ -64,15 +64,15 @@ model Template_ContactUs {
     PhoneNumber String
     Message     String
     Created_on  DateTime @default(now())
-    APIkey  String
+    APIkey      String
 }
 
-model Template_ContactUs2 {
+model template_contactus2 {
     id         String   @id @default(auto()) @map("_id") @db.ObjectId
     Name       String
     Email      String
     Country    String
     Message    String
     Created_on DateTime @default(now())
-    APIkey  String
+    APIkey     String
 }

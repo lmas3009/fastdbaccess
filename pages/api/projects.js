@@ -9,7 +9,6 @@ import {
 export default async function handler(req, res) {
   if (req.method === "POST") {
     const { projectname, projectsize, template, userid } = req.body;
-    console.log(projectname,projectsize,template,userid);
     await createProject(projectname, projectsize, template, userid)
       .then((result) => {
         res.send(result);
@@ -50,8 +49,8 @@ export default async function handler(req, res) {
         });
     }
   } else if (req.method === "DELETE") {
-    const { projectid, projectsize, userid } = req.query;
-    await deleteproject(projectid, projectsize, userid)
+    const { projectid, projectsize, userid,template } = req.query;
+    await deleteproject(projectid, projectsize, userid,template)
       .then((result) => {
         res.send(result);
       })
