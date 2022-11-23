@@ -88,6 +88,7 @@ const NewProject = () => {
         </p>
         <input
           type="text"
+          disabled={data.ProjectCount <= 0 ? true : false}
           className="p-3 border-2 border-[#0A2D28] rounded mt-5 w-full text-sm bg-white text-black"
           placeholder="New project name"
           onChange={(e) => setprojectname(e.target.value)}

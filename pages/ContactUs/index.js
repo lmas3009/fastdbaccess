@@ -5,8 +5,36 @@ import Logo from "../LandingPage/IntroSection/logo";
 import { Fade } from "react-reveal";
 import styles from "../../styles/Home.module.css";
 import Head from "next/head";
+import axios from "axios";
+import Router  from "next/router";
 
 function ContactUs() {
+  const [name, setname] = useState("");
+  const [feedback, setfeedback] = useState("");
+  const [email, setemail] = useState("");
+  const [verify,setverify] = useState(false)
+
+  const submitFeedback = () => {
+    axios
+      .post("http://localhost:3000/api/template_feedback", {
+        Name: name,
+        Email: email,
+        Feedback: feedback,
+        APIkey: "637e05d51d2472e86175c212",
+      })
+      .then(function (response) {
+        if(response.data.status){
+          setverify(true)
+          setTimeout(() => {
+            Router.reload()
+          }, 1000);
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+
   return (
     <div className="relative w-full h-full poppins bg-white">
       <Head>
@@ -42,6 +70,7 @@ function ContactUs() {
                     type="name"
                     className="text-base leading-none text-gray-900 p-3 focus:oultine-none focus:border-indigo-700 mt-4 bg-white border rounded border-gray-800 placeholder-gray-300 placeholder:text-sm"
                     placeholder="Full Name"
+                    onChange={(e) => setname(e.target.value)}
                   />
                 </div>
                 <div className="md:w-72 flex flex-col md:ml-6 md:mt-0 mt-4">
@@ -53,6 +82,7 @@ function ContactUs() {
                     type="name"
                     className="text-base leading-none text-gray-900 p-3 focus:oultine-none focus:border-indigo-700 mt-4 bg-white border rounded border-gray-800 placeholder-gray-300 placeholder:text-sm"
                     placeholder="Email Id"
+                    onChange={(e) => setemail(e.target.value)}
                   />
                 </div>
               </div>
@@ -68,6 +98,7 @@ function ContactUs() {
                     type="name"
                     className="h-36 text-base leading-none text-gray-900 p-3 focus:oultine-none focus:border-indigo-700 mt-4 bg-white border rounded border-gray-800 placeholder-gray-100 resize-none"
                     defaultValue={""}
+                    onChange={(e) => setfeedback(e.target.value)}
                   />
                 </div>
               </div>
@@ -76,8 +107,11 @@ function ContactUs() {
                 policy and how we use data as stated
               </p>
               <div className="flex items-center justify-center w-full">
-                <button className="mt-9 text-base leading-none text-white py-4 px-10 bg-[#0A2D28] rounded hover:bg-indigo-600 focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 focus:outline-none">
-                  SUBMIT
+                <button
+                  onClick={() => submitFeedback()}
+                  className="mt-9 text-base leading-none text-white py-4 px-10 bg-[#0A2D28] rounded hover:bg-indigo-600 focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 focus:outline-none"
+                >
+                  {verify?"SUBMITTED":"SUBMIT"}
                 </button>
               </div>
             </div>

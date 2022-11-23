@@ -11,6 +11,7 @@ import { Fade } from "react-reveal";
 import Logo from "./LandingPage/IntroSection/logo";
 import styles from "../styles/Home.module.css";
 import FDBA from "./LandingPage/fdba_intro";
+import { signIn } from "next-auth/react";
 
 export default function Home() {
   const animationConfiguration = {
@@ -107,7 +108,7 @@ export default function Home() {
                 <div className="w-full h-full flex flex-col gap-3 items-center justify-center text-center">
                   <Logo font="large" />
                   <p className="text-5xl abel">Run Database in Seconds</p>
-                  <p className="p-2 pl-5 pr-5 bg-[#0A2D28] text-white rounded text-center">
+                  <p onClick={() => signIn()} className="p-2 pl-5 pr-5 bg-[#0A2D28] text-white rounded text-center cursor-pointer">
                     Get Started
                   </p>
                 </div>

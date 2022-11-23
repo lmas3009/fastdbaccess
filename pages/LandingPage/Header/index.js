@@ -9,7 +9,9 @@ const Header = () => {
   return (
     <div>
       <div className="w-full flex flex-wrap items-center justify-between p-5 sm:pl-10 sm:pt-5 sm:pr-10 poppins bg-transparent text-black">
-        <Logo font="large" />
+        <Link href="/">
+          <Logo font="large" />
+        </Link>
         <div className="hidden sm:flex items-center justify-between gap-10">
           <div>
             <Link href="/">

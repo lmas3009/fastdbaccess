@@ -1,5 +1,6 @@
 import { Fade } from "react-reveal";
 import Logo from "./logo";
+import { signIn } from "next-auth/react";
 
 const Intro = () => {
   return (
@@ -20,10 +21,10 @@ const Intro = () => {
       </Fade>
       <Fade >
         <div className="flex flex-wrap gap-5 items-center justify-center">
-          <p className="p-2 pl-5 pr-5 bg-[#0A2D28] text-white rounded text-center">
+          <p onClick={() => signIn()} className="p-2 pl-5 pr-5 bg-[#0A2D28] text-white rounded text-center  cursor-pointer">
             Get Started
           </p>
-          <p className="p-2 pl-5 pr-5 border-2 border-[#0A2D28] text-black rounded text-center">
+          <p onClick={() => signIn()} className="p-2 pl-5 pr-5 border-2 border-[#0A2D28] text-black rounded text-center cursor-pointer">
             Try fastdbaccess For Free
           </p>
         </div>
