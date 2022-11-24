@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-sync-scripts */
 /* eslint-disable @next/next/no-img-element */
 import Head from "next/head";
 import Image from "next/image";
@@ -108,7 +109,10 @@ export default function Home() {
                 <div className="w-full h-full flex flex-col gap-3 items-center justify-center text-center">
                   <Logo font="large" />
                   <p className="text-5xl abel">Run Database in Seconds</p>
-                  <p onClick={() => signIn()} className="p-2 pl-5 pr-5 bg-[#0A2D28] text-white rounded text-center cursor-pointer">
+                  <p
+                    onClick={() => signIn()}
+                    className="p-2 pl-5 pr-5 bg-[#0A2D28] text-white rounded text-center cursor-pointer"
+                  >
                     Get Started
                   </p>
                 </div>
@@ -126,6 +130,18 @@ export default function Home() {
           </Fade>
         </div>
       </div>
+      <script
+        data-name="BMC-Widget"
+        data-cfasync="false"
+        src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+        data-id="vemulaaravind"
+        data-description="Support me on Buy me a coffee!"
+        data-message="Thank's for your support"
+        data-color="#40DCA5"
+        data-position="Right"
+        data-x_margin="18"
+        data-y_margin="18"
+      ></script>
     </div>
   );
 }
