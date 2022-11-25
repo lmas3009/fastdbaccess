@@ -1,34 +1,65 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+## What I built
+*fastdbaccess*: Organize and Manage your Database
 
-First, run the development server:
+Easy and simple way to create your database and use the api url perform CRUD operations on your application.
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+https://youtu.be/2cSPbRUjoPE 
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+### App Link
+Live Link 🌍 🚀: https://fastdbaccess.vercel.app
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+### Screenshots
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+Landing Page
+![Full landing page](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/hbg3p20ah1bfl1ibrgly.png)
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Description
+"fastdbacces" which help you to create your database and use the api url perform CRUD operations on your application.
 
-## Deploy on Vercel
+A full step-by-step flow on how it works 👇
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+https://youtu.be/YZyQC2i1R2s 
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### Link to Source Code
+
+https://github.com/lmas3009/fastdbaccess
+
+open-source project
+
+### Permissive License
+
+[MIT](https://choosealicense.com/licenses/mit/)
+
+## Background
+(What made you decide to build this particular app? What inspired you?)
+
+For all my websites, I need to create a database, host a backend service and connect to my contact form. Then I thought of building an app where I can manage all my databases in a single place. So, I can directly use their APIs to store my data. So, we created fastdbaccess to organize and manage your database in a single place.
+
+
+### How I built it
+(How did you utilize MongoDB Atlas? Did you learn something new along the way? Pick up a new skill?)
+
+I have some experience in building projects with MongoDB atlas. When it comes to this project "fastdbaccess". I used a free plan of MongoDB cloud. Through this hackathon, I get to know how search functionality works and real-time streaming. In this project, I haven't used any of those. I tried a simple way. So, this project is under Choose Your own Adventure.
+
+
+### Additional Resources/Info
+Want to share the RoadMap of fastdbaccess from empty to launch
+
+Started design work on 9-Nov-2022
+Launched the landing page on 11-Nov-2022
+Added pages of auth, pricing, contact us on 13-Nov-2022
+....
+Launched the product 23-Nov-2022
+
+Overview Photo of git commits
+
+![git](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/ffo4qrdyaedf2wnz7gpm.png)
+
+The product is launched in producthunt.com link 👇
+
+https://www.producthunt.com/posts/fastdbaccess
